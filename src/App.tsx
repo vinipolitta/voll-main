@@ -1,15 +1,21 @@
 import "./App.css";
 import Cabecalho from "./components/Cabecalho";
-import Container from "./components/Container/intex";
+import Container from "./components/Container";
+
 import Rodape from "./components/Rodape";
-import Titulo from "./components/Titulos";
+import Tabela from "./components/Tabela";
+import Titulo from "./components/Titulo";
+
+import useDadosConsulta from "./useDadosConsulta";
 
 function App() {
+  const { dados, erro } = useDadosConsulta();
   return (
     <>
       <Cabecalho />
       <Container>
-        <Titulo>Area Administrativa</Titulo>
+        <Titulo>Área Administrativa</Titulo>
+        <Tabela consultas={dados} />
       </Container>
       <Rodape />
     </>
