@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@mui/material";
 import IConsulta from "../../types/IConsulta";
+import Botao from "../Botao";
 
 const CelulaEstilizada = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
@@ -56,10 +57,16 @@ function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
             {consultas?.map((linha) => {
               return (
                 <LinhaEstilizada>
-                  <CelulaEstilizada component="th" scope="row">{new Date(linha.data).toLocaleDateString()}</CelulaEstilizada>
+                  <CelulaEstilizada component="th" scope="row">
+                    {new Date(linha.data).toLocaleDateString()}
+                  </CelulaEstilizada>
                   <CelulaEstilizada>{linha.horario}</CelulaEstilizada>
-                  <CelulaEstilizada>{linha.profissional[0].nome}</CelulaEstilizada>
-                  <CelulaEstilizada>{linha.profissional[0].especialidade}</CelulaEstilizada>
+                  <CelulaEstilizada>
+                    {linha.profissional[0].nome}
+                  </CelulaEstilizada>
+                  <CelulaEstilizada>
+                    {linha.profissional[0].especialidade}
+                  </CelulaEstilizada>
                   <CelulaEstilizada>{linha.paciente}</CelulaEstilizada>
                   <CelulaEstilizada>{linha.modalidade}</CelulaEstilizada>
                 </LinhaEstilizada>
@@ -68,6 +75,7 @@ function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <Botao>Ver mais</Botao>
     </>
   );
 }
